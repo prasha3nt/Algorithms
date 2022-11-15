@@ -10,13 +10,7 @@ void printArray(int A[], int n)
     }
     cout<<endl;
 }
-void Swap( int* x, int* y)
-{
-    int temp;
-    temp=*x;
-    *x=*y;
-    *y=temp;
-}
+
 
 void InsertionSort(int A[], int n)
 {
@@ -24,7 +18,6 @@ void InsertionSort(int A[], int n)
     for(int i=1; i<n;i++)
     {
         int ToBeInserted=A[i];
-        int temp;
         int j=i-1;
         while(j>=0 && ToBeInserted<A[j])
         {
