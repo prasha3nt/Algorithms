@@ -1,67 +1,75 @@
 #include <iostream>
 using namespace std;
-void printArray( int A[], int n)
+
+void printArr(int arr[], int len)
 {
-    for(int i=0;i<n;i++)
+    for(int i=0; i<len; i++)
     {
-        cout<<A[i]<<" ";
-        
+        cout<<arr[i]<<" ";
     }
     cout<<endl;
 }
 
-int partition(int myarray[], int low, int high)
+void swap(int* a, int* b)
 {
-    int pivot= myarray[low];
-    int i=low+1;
-    int j=high;
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+}
+
+int partition(int arr[], int low, int high)
+{
+    int pivot= arr[low];
+    int i= low+1;
+    int j= high;
     int temp;
     
-    do{
-        while(myarray[i]<=pivot) 
+    do
+    {
+        while(arr[i]<=pivot)
         {
             i++;
         }
-        while(myarray[j]> pivot)
+        while(arr[j]>pivot)
         {
             j--;
         }
+        
         if(i<j) 
         {
-            temp = myarray[i];
-            myarray[i] = myarray[j];
-            myarray[j] = temp;
+            swap(arr[i],arr[j]);
         }
         
+    }while(i<j);
     
-       } while(i<j);
-        temp = myarray[low];
-        myarray[low] = myarray[j];
-        myarray[j] = temp;  
-       return j;
+    swap(arr[low], arr[j]);
+    return j;
 }
 
-//This algorithm is used to sort an array using quick sort Algorithm.
-void quickSort( int myarray[], int low, int high) 
+void QuickSort(int arr[], int low, int high)
 {
     int partitionIndex;
     if(low<high)
     {
-    partitionIndex=partition( myarray, low, high);
-    quickSort(myarray, low, partitionIndex-1);
-    quickSort( myarray,  partitionIndex+1, high);
-    
-    
+        partitionIndex= partition(arr, low, high);
+        QuickSort(arr, low, partitionIndex-1);
+        QuickSort(arr, partitionIndex+1, high);
     }
 }
 
+
+
+
 int main() {
-    int n=5;
-   
-    int myarray[]= {5,4,3,2,1};
-    printArray(myarray, n);
-    quickSort(myarray,0,n-1);
-    printArray(myarray,n);
+    
+    int arr[]={14,3,4,33,53,23,11,22,22,43};
+    int len= sizeof(arr)/sizeof(int);
+    
+    printArr(arr, len);
+    QuickSort(arr, 0,len-1);
+    printArr(arr, len);
+
+
 
     return 0;
 }
