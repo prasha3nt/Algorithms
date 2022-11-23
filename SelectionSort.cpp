@@ -11,6 +11,15 @@ void printArray( int A[], int n)
     cout<<endl;
 }
 
+/*
+Time Complexity: -  i) Best Case -> O(n^2);
+                   ii) Average Case -> O(n^2);
+                  iii) Worst Case  -> O(n^2);
+                  
+Space Complexity: - O(1);
+isStable= false;
+*/
+    
 void SelectionSort (int a[], int n)
 {
      int temp,i,j,lowestIndex;
